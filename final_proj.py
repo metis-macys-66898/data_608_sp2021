@@ -20,7 +20,7 @@ import json
 from pandas import json_normalize 
 import datetime as dt
 from datetime import date
-import pytz
+# import pytz
 from dateutil.parser import parse
 # !pip install maya
 import maya
@@ -251,8 +251,8 @@ def percentile(n):
 # For example, n = 89 means 89th percentile
 
 st.sidebar.write('Enter your desired percentile(n)')
-n = st.sidebar.text_input("If you want to get the desired selling price of your 1-bed/1-bath condo, you can enter the desired percentile:")
-if 0 <= float(n) <= 100:
+n = st.sidebar.number_input(label="If you want to get the desired selling price of your 1-bed/1-bath condo, you can enter the desired percentile:", min_value=0, max_value=100)
+if 0 <= n <= 100:
     st.sidebar.write('You entered:', n, '-th percentile')
     # At zip code level, what's the sq footage price for each
     final_df.groupby('zipcode').agg({'sq_Footage_price': percentile(n)})
@@ -260,7 +260,7 @@ if 0 <= float(n) <= 100:
     st.write("At zip code level, here are the square footage prices at ", n, "-th percentile", final_df)
     
     # At santa clara county level, what's the sq footage price for each
-    santa_clara_county_level = final_df.reset_index().drop('zipcode', axis = 1).agg(percentile(x)).to_frame()[1:]
+    santa_clara_county_level = final_df.reset_index().drop('zipcode', axis = 1).agg(percentile(n)).to_frame()[1:]
     santa_clara_county_level.columns = ['Santa_Clara_County']
     # santa_clara_county_level
     st.write("At the county level, here are the square footage prices at ", n, "-th percentile", santa_clara_county_level)
@@ -272,9 +272,9 @@ else:
 
 # Enter your desired selling sq footage price. We'll calculate the percentile for you, i.e. how it measures against cumulative historical sold prices and listed prices of current listings
 st.sidebar.write('Enter your desired selling sq footage price(p)')
-p = st.sidebar.text_input("We'll calculate the percentile for you, i.e. how it measures against cumulative historical sold prices and listed prices of current listings:")
+p = st.sidebar.number_input("We'll calculate the percentile for you, i.e. how it measures against cumulative historical sold prices and listed prices of current listings:", min_value = 0)
 
-if 0 <= float(p):
+if 0 <= p:
     st.sidebar.write('You entered $', p, ' as your desired selling sq. footage price')
     # county level 
     percentile = int(proper_round(stats.percentileofscore(final_df['sq_Footage_price'], p)))
