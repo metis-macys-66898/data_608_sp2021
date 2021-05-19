@@ -72,7 +72,7 @@ with chart3.beta_container():
     components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/price_change_in_rent_map.html", height = 301, scrolling = True)
 
 
-with chart3.beta_container():
+with chart4.beta_container():
 #Price Change in Rent per sq footage 
 
     st.write("Price change in rent per sq ft of 1bd/1ba condos across SF Bay Area by zip code")
