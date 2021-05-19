@@ -255,9 +255,9 @@ n = st.sidebar.number_input(label="If you want to get the desired selling price 
 if 0 <= n <= 100:
     st.sidebar.write('You entered:', n, '-th percentile')
     # At zip code level, what's the sq footage price for each
-    final_df.groupby('zipcode').agg({'sq_Footage_price': percentile(n)})
+    final_results = final_df.groupby('zipcode').agg({'sq_Footage_price': percentile(n)})
     # final_df
-    st.write("At zip code level, here are the square footage prices at ", n, "-th percentile", final_df)
+    st.write("At zip code level, here are the square footage prices at ", n, "-th percentile", final_results)
     
     # At santa clara county level, what's the sq footage price for each
     santa_clara_county_level = final_df.reset_index().drop('zipcode', axis = 1).agg(percentile(n)).to_frame()[1:]
