@@ -51,26 +51,32 @@ In this sidebar(panel), you can enter your desired selling price and determine w
 #Image (for Reference of the Zip Code Map)
 # st.image('https://github.com/metis-macys-66898/data_608_sp2021/blob/main/zip_code_map.png')
 
+placeholder = st.empty()
+
+with placeholder.beta_container():
 #Price change
 
 # embed streamlit docs in a streamlit app
-components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/price_change_map.html", height = 301, scrolling = True)
+    st.write("Price change of 1bd/1ba condos across SF Bay Area by zip code")
+    components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/price_change_map.html", height = 301, scrolling = True)
 
-
+with placeholder.beta_container():
 #Sq Footage Price Change
+    st.write("Square footage price change of 1bd/1ba condos across SF Bay Area by zip code")
+    components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/sq_footage_price_change_map.html", height = 301, scrolling = True)
 
-components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/sq_footage_price_change_map.html", height = 301, scrolling = True)
-
-
+with placeholder.beta_container():
 #Price Change in Rent
+    st.write("Price change in rent of 1bd/1ba condos across SF Bay Area by zip code")
+    components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/price_change_in_rent_map.html", height = 301, scrolling = True)
 
-components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/price_change_in_rent_map.html", height = 301, scrolling = True)
 
-
+with placeholder.beta_container():
 #Price Change in Rent per sq footage 
 
-components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/price_change_in_rent_per_sqft_map.html", height = 301, scrolling = True)
-
+    st.write("Price change in rent per sq ft of 1bd/1ba condos across SF Bay Area by zip code")
+    components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/price_change_in_rent_per_sqft_map.html", height = 301, scrolling = True)
+    
 
 # Using Requests to get each of the pandemic datasets Using realty-mole-api
 
@@ -145,7 +151,7 @@ sale_estimate_pdf_5 = json_normalize(response5.json())
 
 # Combining the 6 dataframes into one
 sale_estimate_pdfs = pd.concat([sale_estimate_pdf, sale_estimate_pdf_1, sale_estimate_pdf_2, sale_estimate_pdf_3, sale_estimate_pdf_4, sale_estimate_pdf_5], ignore_index=True)
-sale_estimate_pdfs
+# sale_estimate_pdfs
 
 
 class DatetimeRange:
@@ -200,7 +206,7 @@ cols = list(pd.read_csv(filename, nrows =1))
 
 self_created_db = pd.read_csv(filename, usecols =[i for i in cols if i != 'Index'])
 
-self_created_db
+# self_created_db
 
 # main_df2
 main_df2 = self_created_db.loc[self_created_db['Is it 1-bed/1-bath']=='Y' , ['Address','Price / sq ft', 'Sold Price',  'Sold Price Pre-Pandemic']]
@@ -227,7 +233,7 @@ main_df2.drop('Sold Price Pre-Pandemic', inplace=True, axis=1)
 final_2 = main_df2[['zipcode','Price / sq ft']]
 final_2.columns = ['zipcode', 'sq_Footage_price']
 final_df = pd.concat([main_df[['zipcode','sq_Footage_price']], final_2], ignore_index=True)
-final_df
+# final_df
 
 
             
