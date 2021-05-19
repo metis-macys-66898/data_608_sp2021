@@ -42,34 +42,34 @@ and apartments in the area and see we can also see the same declining trend in t
 #Instructions (sidebar)
 st.sidebar.write("""
 ### Instructions
-At the end of this app, you can enter your desired selling price and determine what's the percentile it is for 1-bed/1-ba condos at the zip code level or at the county level.
+In this sidebar(panel), you can enter your desired selling price and determine what's the percentile it is for 1-bed/1-ba condos at the zip code level or at the county level.
 """)
 
 #Image (sidebar)
-st.sidebar.image('https://github.com/metis-macys-66898/data_608_sp2021/blob/main/zip_code_map_sidebar_top_graphic.png')
+# st.sidebar.image('https://github.com/metis-macys-66898/data_608_sp2021/blob/main/zip_code_map_sidebar_top_graphic.png')
 
 #Image (for Reference of the Zip Code Map)
-st.image('https://github.com/metis-macys-66898/data_608_sp2021/blob/main/zip_code_map.png')
+# st.image('https://github.com/metis-macys-66898/data_608_sp2021/blob/main/zip_code_map.png')
 
 #Price change
 
 # embed streamlit docs in a streamlit app
-components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/price_change_map.html")
+components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/price_change_map.html", height = 301, scrolling = True)
 
 
 #Sq Footage Price Change
 
-components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/sq_footage_price_change_map.html")
+components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/sq_footage_price_change_map.html", height = 301, scrolling = True)
 
 
 #Price Change in Rent
 
-components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/price_change_in_rent_map.html")
+components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/price_change_in_rent_map.html", height = 301, scrolling = True)
 
 
 #Price Change in Rent per sq footage 
 
-components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/price_change_in_rent_per_sqft_map.html")
+components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/price_change_in_rent_per_sqft_map.html", height = 301, scrolling = True)
 
 
 # Using Requests to get each of the pandemic datasets Using realty-mole-api
@@ -89,7 +89,7 @@ response = requests.request("GET", url, headers=headers, params=querystring)
 # print(response.text)
 print(response.json())
 sale_estimate_pdf = json_normalize(response.json())
-sale_estimate_pdf.head
+# sale_estimate_pdf.head
 
 #95110
 
@@ -99,7 +99,7 @@ response1 = requests.request("GET", url, headers=headers, params=querystring)
 
 print(response1.text)
 sale_estimate_pdf_1 = json_normalize(response1.json())
-sale_estimate_pdf_1.head()
+# sale_estimate_pdf_1.head()
 
 #94085
 
@@ -109,7 +109,7 @@ response2 = requests.request("GET", url, headers=headers, params=querystring)
 
 print(response2.text)
 sale_estimate_pdf_2 = json_normalize(response2.json())
-sale_estimate_pdf_2.head()
+# sale_estimate_pdf_2.head()
 
 
 #  95051
@@ -120,7 +120,7 @@ response3 = requests.request("GET", url, headers=headers, params=querystring)
 
 print(response3.text)
 sale_estimate_pdf_3 = json_normalize(response3.json())
-sale_estimate_pdf_3.head()
+# sale_estimate_pdf_3.head()
 
 #  94086
 
@@ -131,7 +131,7 @@ response4 = requests.request("GET", url, headers=headers, params=querystring)
 print(response4.text)
 
 sale_estimate_pdf_4 = json_normalize(response4.json())
-sale_estimate_pdf_4.head()
+# sale_estimate_pdf_4.head()
 
 #  94087
 
@@ -141,7 +141,7 @@ response5 = requests.request("GET", url, headers=headers, params=querystring)
 
 print(response5.text)
 sale_estimate_pdf_5 = json_normalize(response5.json())
-sale_estimate_pdf_5.head()
+# sale_estimate_pdf_5.head()
 
 # Combining the 6 dataframes into one
 sale_estimate_pdfs = pd.concat([sale_estimate_pdf, sale_estimate_pdf_1, sale_estimate_pdf_2, sale_estimate_pdf_3, sale_estimate_pdf_4, sale_estimate_pdf_5], ignore_index=True)
@@ -278,7 +278,7 @@ if 0 <= p:
     st.sidebar.write('You entered $', p, ' as your desired selling sq. footage price')
     # county level 
     percentile = int(proper_round(stats.percentileofscore(final_df['sq_Footage_price'], p)))
-    st.write('Based on your desired selling square footage price ', p, ' , we found that it measured at ', percentile, ' against cumulative historical sold prices and  \n listed prices of current listings at the county level')
+    st.write('Based on your desired selling square footage price ', p, ' , we found that it measured at ', percentile, '-th percentile against cumulative historical sold prices and  \n listed prices of current listings at the county level')
 else:
     st.sidebar.write('Improper entry, please try again with a number greater than or equal to 0.')
 
