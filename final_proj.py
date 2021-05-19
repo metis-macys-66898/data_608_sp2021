@@ -51,27 +51,28 @@ In this sidebar(panel), you can enter your desired selling price and determine w
 #Image (for Reference of the Zip Code Map)
 # st.image('https://github.com/metis-macys-66898/data_608_sp2021/blob/main/zip_code_map.png')
 
-placeholder = st.empty()
+chart1 = st.empty()
+chart2 = st.empty()
+chart3 = st.empty()
+chart4 = st.empty()
 
-with placeholder.beta_container():
+with chart1.beta_container():
 #Price change
-
-# embed streamlit docs in a streamlit app
     st.write("Price change of 1bd/1ba condos across SF Bay Area by zip code")
     components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/price_change_map.html", height = 301, scrolling = True)
 
-with placeholder.beta_container():
+with chart2.beta_container():
 #Sq Footage Price Change
     st.write("Square footage price change of 1bd/1ba condos across SF Bay Area by zip code")
     components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/sq_footage_price_change_map.html", height = 301, scrolling = True)
 
-with placeholder.beta_container():
+with chart3.beta_container():
 #Price Change in Rent
     st.write("Price change in rent of 1bd/1ba condos across SF Bay Area by zip code")
     components.iframe("https://rawcdn.githack.com/metis-macys-66898/data_608_sp2021/a0f7f9a72271150c563b0f86465c4ae80a4b6337/price_change_in_rent_map.html", height = 301, scrolling = True)
 
 
-with placeholder.beta_container():
+with chart3.beta_container():
 #Price Change in Rent per sq footage 
 
     st.write("Price change in rent per sq ft of 1bd/1ba condos across SF Bay Area by zip code")
