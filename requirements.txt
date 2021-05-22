@@ -4,3 +4,4 @@ pandas==1.2.3
 folium==0.12.1
 maya==0.6.1
 scipy==1.6.3
+st-annotated-text==1.1.0
