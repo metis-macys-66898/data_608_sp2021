@@ -289,7 +289,7 @@ if 0 <= p:
     # county level 
     percentile = int(proper_round(stats.percentileofscore(final_df['sq_Footage_price'], p)))
     # st.write('Based on your desired selling square footage price ', p, ' , we found that it measured at ', percentile, '-th percentile against cumulative historical sold prices and  \n listed prices of current listings at the county level')
-    st.write(annotated_text(('Based on your desired selling square footage price ' ,"#8ef")), p)
+    st.markdown(annotated_text(('Based on your desired selling square footage price ' , p),"#8ef"))
 else:
     st.sidebar.write('Improper entry, please try again with a number greater than or equal to 0.')
 
