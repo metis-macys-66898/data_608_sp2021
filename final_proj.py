@@ -100,7 +100,7 @@ url = "https://realty-mole-property-api.p.rapidapi.com/salePrice"
 querystring = {"compCount":"10","squareFootage":"870","bathrooms":"1","address":"1883 Agnew Rd Unit 318, Santa Clara, CA","bedrooms":"1","propertyType":"Condo"}
 
 headers = {
-    'x-rapidapi-key': "ca0f4a0c63msheb56ce445093e55p1d9232jsn4658d02eedac",
+    'x-rapidapi-key': st.secrets["my_api_secrets"]["my_rapidapi_key"],
     'x-rapidapi-host': "realty-mole-property-api.p.rapidapi.com"
     }
 
