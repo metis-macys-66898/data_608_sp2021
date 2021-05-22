@@ -33,7 +33,7 @@ from annotated_text import annotated_text, annotation
 
 #Introduction (main section)
 st.write("""
-# The Effect of Pandemic on the selling price and rent for 1-bedroom condo or apartment.
+# The Effect of Pandemic on the selling price and price of rent for 1-bedroom condo or apartment.
 ## Introduction
 Background info: As we're entering a era of remote working, and with the interest rates near historic lows, there are many buyers for single family homes everywhere from 
 East Bay of SF Bay Area to Sacramento, CA to some small towns in Colorado and Arizona. I've got a 1-bedroom/1-bathroom condo that I really wanted to sell but unfortunately 
@@ -42,8 +42,12 @@ comparisons with what we see since Mar 18 2020, the official stay-at-home date f
 and apartments in the area and see we can also see the same declining trend in terms of demand and price.
 
 
+
+
 ### Methodology
 We calculated the % change of median price from pre-pandemic to in-pandemic
+
+
 
 
 """)
@@ -303,9 +307,10 @@ if 0 <= p:
     st.sidebar.write('You entered $', p, ' as your desired selling sq. footage price')
     # county level 
     percentile = int(proper_round(stats.percentileofscore(final_df['sq_Footage_price'], p)))
-    
-    st.write('Based on your desired selling square footage price ', p, ' , we found that it measured at ', percentile, '-th percentile against cumulative historical sold \
-                            prices and listed prices of current listings at the county level' )
+    annotated('Your Final Takeaway', "#8ef")
+    st.write('Based on your desired selling square footage price $', p, ' , we found that it measured at ', percentile, '-th percentile against cumulative historical sold \
+              prices and listed prices of current listings at the county level' )
+
     
 else:
     st.sidebar.write('Improper entry, please try again with a number greater than or equal to 0.')
@@ -317,13 +322,11 @@ else:
 #-------------------------------------------------Citations-----------------------------------------------#
 
 #Cite myself as author
-st.sidebar.markdown(' ')
-st.sidebar.markdown('......................................................')
+st.sidebar.markdown(h_rule, unsafe_allow_html=True) 
 st.sidebar.markdown("*This app was built by Dennis Pong using Python and Streamlit.*")
 
 #Cite data and academic motivational sources
-st.markdown(' ')
-st.markdown('.............................................................................................')
+st.markdown(h_rule, unsafe_allow_html=True) 
 st.write("""
 ## References
 https://towardsdatascience.com/visualizing-data-at-the-zip-code-level-with-folium-d07ac983db20
