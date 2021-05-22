@@ -28,9 +28,8 @@ import maya
 # from contextlib import suppress
 from scipy import stats
 
-from load_css import local_css
+from annotated_text import annotated_text, annotation
 
-local_css("style.css")
 
 #Introduction (main section)
 st.write("""
@@ -280,9 +279,6 @@ else:
     st.sidebar.write('Improper entry, please try again with a number between 0 and 100.')
 
 
-t = "<div>Hello there my <span class='highlight blue'>name <span class='bold'>yo</span> </span> is <span class='highlight red'>Fanilo <span class='bold'>Name</span></span></div>"
-
-st.markdown(t, unsafe_allow_html=True)
 
 # Enter your desired selling sq footage price. We'll calculate the percentile for you, i.e. how it measures against cumulative historical sold prices and listed prices of current listings
 st.sidebar.write('Enter your desired selling sq footage price(p)')
@@ -292,7 +288,8 @@ if 0 <= p:
     st.sidebar.write('You entered $', p, ' as your desired selling sq. footage price')
     # county level 
     percentile = int(proper_round(stats.percentileofscore(final_df['sq_Footage_price'], p)))
-    st.write('Based on your desired selling square footage price ', p, ' , we found that it measured at ', percentile, '-th percentile against cumulative historical sold prices and  \n listed prices of current listings at the county level')
+    # st.write('Based on your desired selling square footage price ', p, ' , we found that it measured at ', percentile, '-th percentile against cumulative historical sold prices and  \n listed prices of current listings at the county level')
+    st.write(annotated_text(('Based on your desired selling square footage price ' ,"#8ef")), p)
 else:
     st.sidebar.write('Improper entry, please try again with a number greater than or equal to 0.')
 
