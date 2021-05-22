@@ -256,7 +256,7 @@ def percentile(n):
     return percentile_
 
 h_rule = "<HR WIDTH="71%" SIZE="8" NOSHADE>"
-st.markdown(h_rule) 
+st.markdown(h_rule, unsafe_allow_html=True) 
 
 
 # Enter your desired percentile n
@@ -282,7 +282,7 @@ else:
 
 
 h_rule = "<HR WIDTH="71%" SIZE="8" NOSHADE>"
-st.markdown(h_rule) 
+st.markdown(h_rule, unsafe_allow_html=True) 
 
 
 # Enter your desired selling sq footage price. We'll calculate the percentile for you, i.e. how it measures against cumulative historical sold prices and listed prices of current listings
