@@ -28,6 +28,10 @@ import maya
 # from contextlib import suppress
 from scipy import stats
 
+from load_css import local_css
+
+local_css("style.css")
+
 #Introduction (main section)
 st.write("""
 # The Effect of Pandemic on the selling price and rent for 1-bedroom condo or apartment.
@@ -276,6 +280,9 @@ else:
     st.sidebar.write('Improper entry, please try again with a number between 0 and 100.')
 
 
+t = "<div>Hello there my <span class='highlight blue'>name <span class='bold'>yo</span> </span> is <span class='highlight red'>Fanilo <span class='bold'>Name</span></span></div>"
+
+st.markdown(t, unsafe_allow_html=True)
 
 # Enter your desired selling sq footage price. We'll calculate the percentile for you, i.e. how it measures against cumulative historical sold prices and listed prices of current listings
 st.sidebar.write('Enter your desired selling sq footage price(p)')
