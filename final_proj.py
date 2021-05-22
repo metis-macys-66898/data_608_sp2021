@@ -40,6 +40,12 @@ East Bay of SF Bay Area to Sacramento, CA to some small towns in Colorado and Ar
 the demand has been dropping due to the pandemic and prices have been driven down. We tried to look at Sold Price and Sq-footage price Pre-pandemic to try to make some 
 comparisons with what we see since Mar 18 2020, the official stay-at-home date for CA. In additions, we tried to also look for 1-bed/1-bath rental market for both condos
 and apartments in the area and see we can also see the same declining trend in terms of demand and price.
+
+
+### Methodology
+We calculated the % change of median price from pre-pandemic to in-pandemic
+
+
 """)
 
 #Instructions (sidebar)
@@ -258,6 +264,7 @@ def percentile(n):
 h_rule = "<HR WIDTH='''71%''' SIZE='''8''' NOSHADE>"
 st.markdown(h_rule, unsafe_allow_html=True) 
 
+st.sidebar.markdown(h_rule, unsafe_allow_html=True) 
 
 # Enter your desired percentile n
 # For example, n = 89 means 89th percentile
@@ -285,6 +292,9 @@ h_rule = "<HR WIDTH='''71%''' SIZE='''8''' NOSHADE>"
 st.markdown(h_rule, unsafe_allow_html=True) 
 
 
+
+st.sidebar.markdown(h_rule, unsafe_allow_html=True) 
+
 # Enter your desired selling sq footage price. We'll calculate the percentile for you, i.e. how it measures against cumulative historical sold prices and listed prices of current listings
 st.sidebar.write('Enter your desired selling sq footage price(p)')
 p = st.sidebar.number_input("We'll calculate the percentile for you, i.e. how it measures against cumulative historical sold prices and listed prices of current listings:", min_value = 0)
@@ -295,7 +305,7 @@ if 0 <= p:
     percentile = int(proper_round(stats.percentileofscore(final_df['sq_Footage_price'], p)))
     
     st.write('Based on your desired selling square footage price ', p, ' , we found that it measured at ', percentile, '-th percentile against cumulative historical sold \
-                            prices and  \n listed prices of current listings at the county level' )
+                            prices and listed prices of current listings at the county level' )
     
 else:
     st.sidebar.write('Improper entry, please try again with a number greater than or equal to 0.')
